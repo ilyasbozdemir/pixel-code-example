@@ -1,4 +1,6 @@
-import type { Config } from 'tailwindcss'
+// tailwind.config.js
+
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -8,13 +10,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        light: {
+          DEFAULT: '#f3f4f6', // Ana arka plan rengi
+          text: '#333', // Metin rengi
+          primary: '#3490dc', // Ana renk
+          secondary: '#6b7280', // İkincil renk
+          // Diğer renkler eklenebilir...
+        },
       },
     },
   },
   plugins: [],
-}
-export default config
+};
+
+export default config;
