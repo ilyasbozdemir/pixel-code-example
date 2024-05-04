@@ -8,14 +8,11 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Sayfa yüklendiğinde bu kod çalışacak
-        fetch("http://localhost:3000//api/pixel", {
-          method: "POST", // veya "GET" isteğinize göre
+        fetch("http://localhost:3000/api/pixel?code=lFDab9yvZ0", {
+          method: "GET", // veya "GET" isteğinize göre
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            /* gerekli veriler */
-          }),
         })
           .then((response) => response.json())
           .then((data) => console.log(data))

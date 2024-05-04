@@ -20,7 +20,7 @@ const CodeGenerator: React.FC = () => {
       </script>
       <script src="${
         API_BASE_URL +
-        `/api/pixel?code=?code=${encodeURIComponent(code)}`
+        `/api/pixel?code=${encodeURIComponent(code)}`
       }">
       </script>
     `;
@@ -36,9 +36,7 @@ const CodeGenerator: React.FC = () => {
         Math.floor(Math.random() * characters.length)
       );
     }
-
     setCode(randomCode);
-    console.log(code);
   };
 
   const copyToClipboard = () => {
