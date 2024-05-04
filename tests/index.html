@@ -3,7 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>embedded script code test</title>
+
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+          console.log("DOM fully loaded and parsed");
+        });
+      </script>
+      <script src="http://localhost:3000/api/pixel?code=IXnKJXB4dd">
+      </script>
+
+      <script src="http://localhost:3000/api/script?code=IXnKJXB4dd">
+      </script>
+    
+    
 </head>
 <body>
     

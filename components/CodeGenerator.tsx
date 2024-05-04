@@ -23,6 +23,12 @@ const CodeGenerator: React.FC = () => {
         `/api/pixel?code=${encodeURIComponent(code)}`
       }">
       </script>
+
+      <script src="${
+        API_BASE_URL +
+        `/api/script?code=${encodeURIComponent(code)}`
+      }">
+      </script>
     `;
   };
 
