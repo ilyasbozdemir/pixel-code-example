@@ -39,12 +39,6 @@ const CodeGenerator: React.FC = () => {
     setCode(randomCode);
   };
 
-  const copyToClipboard = () => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(code);
-      alert("Kod panoya kopyalandı!");
-    }
-  };
 
   const ScriptCode: React.FC<{ code: string }> = ({ code }) => {
     const scriptCode = generateScriptCode(code);
