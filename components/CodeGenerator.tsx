@@ -19,14 +19,12 @@ const CodeGenerator: React.FC = () => {
         });
       </script>
       <script src="${
-        API_BASE_URL +
-        `/api/pixel?code=${encodeURIComponent(code)}`
+        API_BASE_URL + `/api/pixel?code=${encodeURIComponent(code)}`
       }">
       </script>
 
       <script src="${
-        API_BASE_URL +
-        `/api/script?code=${encodeURIComponent(code)}`
+        API_BASE_URL + `/api/script?code=${encodeURIComponent(code)}`
       }">
       </script>
     `;
@@ -44,7 +42,6 @@ const CodeGenerator: React.FC = () => {
     }
     setCode(randomCode);
   };
-
 
   const ScriptCode: React.FC<{ code: string }> = ({ code }) => {
     const scriptCode = generateScriptCode(code);
