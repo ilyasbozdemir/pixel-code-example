@@ -47,41 +47,61 @@ const CodeGenerator: React.FC = () => {
     const scriptCode = generateScriptCode(code);
 
     return (
-      <div className="p-4 bg-gray-100 border border-gray-300 rounded">
-        <h3 className="text-lg font-semibold mb-2">Script Kodu</h3>
-        <div className="relative">
+      <>
+        <div className="p-4 bg-gray-100 border border-gray-300 rounded">
+          <h3 className="text-lg font-semibold mb-2">Script Kodu</h3>
+
           <code className="block whitespace-pre-wrap break-all">
             {scriptCode}
           </code>
-          <button
-            className="absolute top-2 right-2 px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none"
-            onClick={() => {
-              navigator.clipboard.writeText(scriptCode);
-              alert("Kod panoya kopyalandı!");
-            }}
-          >
-            Kopyala
-          </button>
         </div>
-      </div>
+      </>
     );
   };
 
   return (
-    <div className="mt-8 ">
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={generateRandomCode}
-      >
-        Kod Üret
-      </button>
+    <>
+      <div className="flex justify-center items-center h-screen">
+        <div className="space-y-5">
+          <div className="p-3 bg-white shadow rounded-lg">
+            <p className="font-sans">
+              Aşağıdaki üretilen kodu herhangi bir HTML dosyasının head etiketi
+              içine yerleştirip test edebilirsiniz.
+            </p>
+            <div className="p-3 flex flex-column gap-4 items-center">
+              <button
+                className="bg-indigo-700 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded"
+                onClick={generateRandomCode}
+              >
+                {
+                  code ==="" ?"Kod Üret" : "Yeni Kod Üret"
+                }
+              </button>
+              <button
+                className={`bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded ${
+                  code === "" && "disabled:opacity-50 cursor-not-allowed"
+                }`}
+                onClick={() => {
+                  navigator.clipboard.writeText(generateScriptCode(code));
+                  alert("Kod panoya kopyalandı!");
+                }}
+                disabled={code === "" ? true : false}
+              >
+                Kopyala
+              </button>
 
-      {code && (
-        <div className="mt-4">
-          <ScriptCode code={code} />
+              <div>
+                {code && (
+                  <div>
+                    <ScriptCode code={code} />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-      )}
-    </div>
+      </div>
+    </>
   );
 };
 

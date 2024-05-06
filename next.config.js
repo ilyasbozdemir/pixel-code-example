@@ -1,6 +1,8 @@
 // next.config.js
 
 module.exports = {
+  
+  pageExtensions: ['tsx', 'ts', 'jsx', 'js', 'mdx'],
     async headers() {
       return [
         {
@@ -24,4 +26,4 @@ module.exports = {
       ];
     },
   };
-  
+
