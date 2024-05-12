@@ -17,31 +17,6 @@ const scriptCode = `
 // Js Code
 alert('Sunucuya gönderilen code değeri : ${code}');
 
-// CSS Code
-const style = document.createElement('style');
-style.textContent = \`
-  /* CSS kodu */
-  body {
-    background-color: green;
-  }
-  .modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-\`;
-document.head.appendChild(style);
-
-// Modal HTML oluşturma
-const modal = document.createElement('div');
-modal.classList.add('modal');
-modal.innerHTML = '<p>Hello</p>';
-document.body.appendChild(modal);
 `;
 
 
