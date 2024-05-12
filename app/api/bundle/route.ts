@@ -1,11 +1,13 @@
 export const dynamic = "force-dynamic"; // defaults to auto
 import { promises as fs } from "fs";
+import path from 'path';
+
 
 export async function GET(request: Request, response: Response) {
-  const bundleCode = await fs.readFile(
-    process.cwd() + "/src/lib/bundle.js",
-    "utf8"
-  );
+
+
+  const filePath = path.join(process.cwd(), 'src/lib/bundle.js');
+  const bundleCode = await fs.readFile(filePath, 'utf8');
 
   return new Response(bundleCode, {
     status: 200,
