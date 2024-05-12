@@ -156,43 +156,53 @@ const CodeGenerator: React.FC = () => {
                 <div className="flex gap-4 ">
                   <div className="space-y-5">
                     <div className="p-3 bg-white shadow rounded-lg">
-                   <>
-                   <p className="font-sans">
-                        <Link
-                          href={url}
-                          target="_blank"
-                          className="text-violet-500 my-[10px]"
-                        >
-                          {"  Üretilen Linke Git -> "}
-                          {url}
-                        </Link>
-                      </p>
-                      <p className="font-sans">
-                        <Link
-                          href={scriptUrl}
-                          target="_blank"
-                          className="text-violet-500 my-[10px]"
-                        >
-                          {"  Üretilen Linke Git -> "}
-                          {scriptUrl}
-                        </Link>
-                      </p>
-                      <p className="font-sans">
-                        <Link
-                          href={scriptModalUrl}
-                          target="_blank"
-                          className="text-violet-500 my-[10px]"
-                        >
-                          {"  Üretilen Linke Git -> "}
-                          {scriptModalUrl}
-                        </Link>
-                      </p>
-                      <p className="font-sans p-3 text-gray-500">
-                      şimdi modal script calısıyor aslında  iframe ile o tagı head içine atılırsa,
-                      gösterir ama burda bir sorun var,
-                      fb pixel ve ya google analytics gibi pixel kodlarında  wiindow ve document nesnelerini de kendilerine gönderiyorlar o kısımda olursa su an sorun kalkıyor
-                      </p>
-                   </>
+                      <>
+                        <p className="font-sans">
+                          <Link
+                            href={url}
+                            target="_blank"
+                            className="text-violet-500 my-[10px]"
+                          >
+                            {"  Üretilen Linke Git -> "}
+                            {url}
+                          </Link>
+                        </p>
+                        <p className="font-sans">
+                          <Link
+                            href={scriptUrl}
+                            target="_blank"
+                            className="text-violet-500 my-[10px]"
+                          >
+                            {"  Üretilen Linke Git -> "}
+                            {scriptUrl}
+                          </Link>
+                        </p>
+                        <p className="font-sans">
+                          <Link
+                            href={scriptModalUrl}
+                            target="_blank"
+                            className="text-violet-500 my-[10px]"
+                          >
+                            {
+                              " Müşteri sayfasında gösterilcek modal için müşteri bunu iframe olarak kendis sitesinde göstericek -> "
+                            }
+                            {scriptModalUrl}
+                          </Link>
+                        </p>
+                        <p className="font-sans p-3 text-gray-500">
+                          şimdi modal script calısıyor aslında iframe ile o tagı
+                          head içine atılırsa, gösterir ama burda bir sorun var,
+                          yani kullanıcı document ve window nesnelerini
+                          Immediately Invoked Function Expression kullanarak ana
+                          sunucuya göndermesi lazım ben su an sadece html5
+                          dosyası gönderiyorum ama kullanıcının document
+                          nesnesini gönderirse documentin üzerinde göstertmek
+                          daha koaly olucak: fb pixel ve ya google analytics
+                          gibi pixel kodlarında wiindow ve document nesnelerini
+                          de kendilerine gönderiyorlar o kısımda olursa su an
+                          sorun kalkıyor
+                        </p>
+                      </>
                       <p className="font-sans text-gray-500">
                         üretilen koda ait ne kadar cok istek atılırsa pageviews
                         değeri o kadar artar.
@@ -201,6 +211,11 @@ const CodeGenerator: React.FC = () => {
                       <p className="font-sans">
                         Aşağıdaki üretilen kodu herhangi bir HTML dosyasının
                         head etiketi içine yerleştirip test edebilirsiniz.
+                      </p>
+                      <p>
+                        iframe tagını herhangi bir dosya içinde head tagı içine
+                        alarak da , src linkinde ki scripti o dosyaya
+                        yedirebiliriz.
                       </p>
                       <div className="p-3  flex-row  justify-between items-center">
                         <button
