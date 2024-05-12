@@ -36,9 +36,9 @@ const CodeGenerator: React.FC = () => {
     </iframe>
 
     //testing -- bu kod olucaktır. diğerleri silincek ve refactoring edilcektir.
-    <script src="${API_BASE_URL + `/api/bundle`}" data-id="${encodeURIComponent(
-      code
-    )}" async defer></script>
+    // altta ki kodu herhangi bir html dosyasına eklerseniz popup gösterdiğini görüceksiniz.
+    <script src="${API_BASE_URL + `/api/bundle`}" data-id="${encodeURIComponent( code)}" async defer></script>
+
   
     `;
   };
@@ -190,19 +190,7 @@ const CodeGenerator: React.FC = () => {
                             {scriptModalUrl}
                           </Link>
                         </p>
-                        <p className="font-sans p-3 text-gray-500">
-                          şimdi modal script calısıyor aslında iframe ile o tagı
-                          head içine atılırsa, gösterir ama burda bir sorun var,
-                          yani kullanıcı document ve window nesnelerini
-                          Immediately Invoked Function Expression kullanarak ana
-                          sunucuya göndermesi lazım ben su an sadece html5
-                          dosyası gönderiyorum ama kullanıcının document
-                          nesnesini gönderirse documentin üzerinde göstertmek
-                          daha koaly olucak: fb pixel ve ya google analytics
-                          gibi pixel kodlarında wiindow ve document nesnelerini
-                          de kendilerine gönderiyorlar o kısımda olursa su an
-                          sorun kalkıyor
-                        </p>
+                        
                       </>
                       <p className="font-sans text-gray-500">
                         üretilen koda ait ne kadar cok istek atılırsa pageviews
@@ -211,13 +199,10 @@ const CodeGenerator: React.FC = () => {
                       <hr />
                       <p className="font-sans">
                         Aşağıdaki üretilen kodu herhangi bir HTML dosyasının
-                        head etiketi içine yerleştirip test edebilirsiniz.
+                        body etiketi içine yerleştirip test edebilirsiniz.
                       </p>
-                      <p>
-                        iframe tagını herhangi bir dosya içinde head tagı içine
-                        alarak da , src linkinde ki scripti o dosyaya
-                        yedirebiliriz.
-                      </p>
+                 
+                 
                       <div className="p-3  flex-row  justify-between items-center">
                         <button
                           className={`bg-indigo-700 hover:bg-indigo-500 text-white font-bold  px-4 py-4 my-3 rounded ${
