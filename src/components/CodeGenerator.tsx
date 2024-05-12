@@ -24,11 +24,6 @@ const CodeGenerator: React.FC = () => {
       }">
       </script>
 
-      <script src="${
-        API_BASE_URL + `/api/bundle?code=${encodeURIComponent(code)}`
-      }">
-      </script>
-
       <iframe src="${
         API_BASE_URL + `/api/modal-script?code=${encodeURIComponent(code)}`
       }"

@@ -20,6 +20,8 @@
     // Popup HTML'ini sayfaya ekleme
     document.body.insertAdjacentHTML('beforeend', popupHTML);
 
+
+    
     // Kapatma butonunu seçme
     var closeButton = document.getElementById('closeButton');
 
