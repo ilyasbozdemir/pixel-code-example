@@ -29,21 +29,16 @@ const CodeGenerator: React.FC = () => {
       }">
       </script>
 
-      <iframe
-      src="${
+      <iframe src="${
         API_BASE_URL + `/api/modal-script?code=${encodeURIComponent(code)}`
       }"
-      width="100%"
-      height="100%"
-      frameborder="0"
-      allowfullscreen
-      >
+      width="100%"   height="100%"  frameborder="0"  allowfullscreen   >
     </iframe>
 
-    //testing -- bu kod olucaktır.
-    <script src="${
-      API_BASE_URL + `/api/bundle`
-    }" data-id="${encodeURIComponent(code)}" async defer></script>
+    //testing -- bu kod olucaktır. diğerleri silincek ve refactoring edilcektir.
+    <script src="${API_BASE_URL + `/api/bundle`}" data-id="${encodeURIComponent(
+      code
+    )}" async defer></script>
   
     `;
   };

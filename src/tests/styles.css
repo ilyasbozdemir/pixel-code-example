@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #e66a05;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .sidebar {
+    background-color: #f4f4f4;
+    padding: 20px;
+    width: 200px;
+    float: left;
+  }
+  
+  article {
+    margin-left: 220px; /* sidebar genişliği + boşluk */
+    padding: 20px;
+  }
+  
+  footer {
+    background-color: #e66a05;
+    color: #fff;
+    padding: 20px;
+    clear: both;
+    text-align: center;
+  }
+  
