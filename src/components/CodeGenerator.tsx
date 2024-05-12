@@ -37,8 +37,9 @@ const CodeGenerator: React.FC = () => {
       height="100%"
       frameborder="0"
       allowfullscreen
-    ></iframe>
-    
+      >
+    </iframe>
+  
     `;
   };
 
