@@ -1,27 +1,58 @@
 export const dynamic = "force-dynamic"; // defaults to auto
 
 export async function GET(request: Request, response: Response) {
-  const scriptCode = `
-    // JavaScript kodu - Modal veya popup oluşturma
-    function openModal() {
-      // Modal veya popup içeriği
-      const modalContent = '<div style="background-color: white; padding: 20px;">Bu bir modal içeriğidir. Kapatmak için <button onclick="closeModal()">buraya tıklayın</button></div>';
-      
-      // Modal veya popup elementi oluşturma
-      const modalElement = document.createElement('div');
-      modalElement.innerHTML = modalContent;
-      modalElement.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0, 0, 0, 0.5); z-index: 1000; padding: 20px;';
-
-      // Modalı sayfaya ekleme
-      document.body.appendChild(modalElement);
-    }
-
-    function closeModal() {
-      const modalElement = document.querySelector('.modal');
-      if (modalElement) {
-        modalElement.remove();
-      }
-    }
+  const scriptCode = 
+  `<!DOCTYPE html>
+  <html lang="tr">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>JavaScript kodu - Modal veya popup oluşturma</title>
+      <style>
+        /* CSS kodu */
+        .modal {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 1000;
+          padding: 20px;
+        }
+  
+        .modal-content {
+          background-color: white;
+          padding: 20px;
+        }
+      </style>
+      <script>
+        function openModal() {
+          // Modal veya popup içeriği
+          const modalContent =
+            '<div class="modal-content">Bu bir modal içeriğidir. Kapatmak için <button onclick="closeModal()">buraya tıklayın</button></div>';
+  
+          // Modal veya popup elementi oluşturma
+          const modalElement = document.createElement("div");
+          modalElement.classList.add("modal");
+          modalElement.innerHTML = modalContent;
+  
+          // Modalı sayfaya ekleme
+          document.body.appendChild(modalElement);
+        }
+  
+        function closeModal() {
+          const modalElement = document.querySelector(".modal");
+          if (modalElement) {
+            modalElement.remove();
+          }
+        }
+      </script>
+    </head>
+    <body>
+      <button onclick="openModal()">Modalı Aç</button>
+    </body>
+  </html>
+  
   `;
 
   return new Response(scriptCode, {
