@@ -1,3 +1,10 @@
+/**
+ * @license
+ * Copyright İlyas Bozdemir, https://ilyasbozdemir.dev </>
+ * Available under MIT License
+ * <https://github.com/ilyasbozdemir/pixel-code-example/blob/main/LICENSE>
+ */
+
 "use strict";
 
 (() => {
