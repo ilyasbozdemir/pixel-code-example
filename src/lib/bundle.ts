@@ -8,52 +8,62 @@
 "use strict";
 
 (() => {
-  var POPUP_API_URL = "http://localhost:3000/handler";
-  var API_URL = "http://localhost:3000/";
-  var CDN_URL = "http://localhost:3000/cdn";
-  var STORE_PATH = "accounts";
-  var ENCRYPTION_SECRET_KEY = "71e50ec1b38dc029b660312dcd15412e";
-  var DASHBOARD_URL = "http://localhost:3000/app";
+  //
+  const BASE_URL =
+    "http://localhost:3000" || "https://pixel-code-example.vercel.app";
 
-  // Popup için HTML oluşturma
-  var popupHTML = `
-        <div id="popupContainer" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid black; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
-            <h2>Popup Başlığı</h2>
-            <p>Popup içeriği buraya gelecek.</p>
-            <button id="closeButton">Kapat</button>
-        </div>
+  var POPUP_API_URL = `${BASE_URL}/api/handler`;
+  var API_URL = BASE_URL;
+  var CDN_URL = `${BASE_URL}/cdn`;
+  var DASHBOARD_URL = `${BASE_URL}/app`;
+  var ENCRYPTION_SECRET_KEY = "71e50ec1b38dc029b660312dcd15412e";
+
+  const scriptTag = document.querySelector(
+    `script[src="${BASE_URL}/api/bundle"]`
+  );
+
+  var customerId: any = null;
+
+  if (scriptTag) {
+    customerId = scriptTag.getAttribute("data-id");
+
+    if (customerId) {
+      console.log("data-id değeri:", customerId);
+    } else {
+      console.log("script etiketi içinde data-id özelliği bulunamadı.");
+    }
+  } else {
+    console.log("Script etiketi bulunamadı.");
+  }
+
+  function createPopup(message: string) {
+    const popupHTML = `
+      <div id="popupContainer" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid black; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+          <h2>Popup Başlığı</h2>
+          <p>${message}</p>
+          <button id="closeButton">Kapat</button>
+      </div>
     `;
 
-    // Script etiketini seçme
-const scriptTag = document.querySelector('script[src="https://pixel-code-example.vercel.app/api/bundle"]');
+    document.body.insertAdjacentHTML("beforeend", popupHTML);
 
-// Eğer script etiketi bulunduysa
-if (scriptTag) {
-    // data-id değerini alma
-    const dataId = scriptTag.getAttribute('data-id');
+    const closeButton = document.getElementById("closeButton");
 
-    // data-id değerini kontrol etme
-    if (dataId) {
-        console.log("data-id değeri:", dataId);
-    } else {
-        console.log("script etiketi içinde data-id özelliği bulunamadı.");
-    }
-} else {
-    console.log("Script etiketi bulunamadı.");
-}
-
- 
+    closeButton?.addEventListener("click", function () {
+      const popupContainer = document.getElementById("popupContainer");
+      if (popupContainer) {
+        popupContainer.remove();
+      }
+    });
+  }
 
 
-  document.body.insertAdjacentHTML("beforeend", popupHTML);
+  createPopup(`customerId: ${customerId}`);
 
 
-  var closeButton = document.getElementById("closeButton");
+/*
 
-  closeButton?.addEventListener("click", function () {
-    var popupContainer = document.getElementById("popupContainer");
-    if (popupContainer) {
-      popupContainer.remove();
-    }
-  });
+*/
+
+
 })();
