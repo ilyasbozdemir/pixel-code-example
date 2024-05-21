@@ -36,34 +36,103 @@
     console.log("Script etiketi bulunamadı.");
   }
 
-  function createPopup(message: string) {
+  function showPopup(message: string, discountCode: string) {
     const popupHTML = `
-      <div id="popupContainer" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid black; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
-          <h2>Popup Başlığı</h2>
+      <div id="popupBackdrop" class="popup-backdrop">
+        <div id="popupContainer" class="popup-container">
+          <h2>🎉 Özel İndirim! 🎉</h2>
           <p>${message}</p>
-          <button id="closeButton">Kapat</button>
+          <p class="discount-code">İndirim Kodu: <strong>${discountCode}</strong></p>
+          <button id="copyButton" class="copy-button">Kodu Kopyala</button>
+          <button id="closeButton" class="close-button">Kapat</button>
+        </div>
       </div>
     `;
-
+  
+    const style = document.createElement("style");
+    style.innerHTML = `
+      .popup-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+  
+      .popup-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 80%;
+        text-align: center;
+        animation: fadeIn 0.3s ease-out;
+      }
+  
+      .popup-container h2 {
+        margin-top: 0;
+        color: #ff5733;
+      }
+  
+      .discount-code {
+        font-size: 18px;
+        color: #28a745;
+        margin: 10px 0;
+      }
+  
+      .copy-button, .close-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin-top: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+  
+      .copy-button:hover, .close-button:hover {
+        background-color: #0056b3;
+      }
+  
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    `;
+    document.head.appendChild(style);
     document.body.insertAdjacentHTML("beforeend", popupHTML);
-
+  
     const closeButton = document.getElementById("closeButton");
-
+    const copyButton = document.getElementById("copyButton");
+  
     closeButton?.addEventListener("click", function () {
-      const popupContainer = document.getElementById("popupContainer");
-      if (popupContainer) {
-        popupContainer.remove();
+      const popupBackdrop = document.getElementById("popupBackdrop");
+      if (popupBackdrop) {
+        popupBackdrop.remove();
       }
     });
+  
+    copyButton?.addEventListener("click", function () {
+      navigator.clipboard.writeText(discountCode).then(() => {
+        alert("İndirim kodu kopyalandı!");
+      });
+    });
   }
-
-
-  createPopup(`customerId: ${customerId}`);
-
-
-/*
-
-*/
-
+  
+  showPopup("Sadece bugün geçerli <b>%20</b> indirim fırsatını kaçırmayın!", "INDIRIM20");
 
 })();
